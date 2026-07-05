@@ -17,11 +17,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-import sA from "../static/solar_aligner.png";
-import sA1 from "../static/solar_aligner1.png";
-import sC from "../static/solar_cleaner.png";
-import tE from "../static/turbofanengine.png";
-import tE1 from "../static/turbofanengine1.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -73,7 +68,19 @@ export default function Home() {
           <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
             Divyan Acharya
           </h1>
-          <p className="text-2xl text-primary">Mechanical Engineer</p>
+
+          {/* NEW: Engineers Australia Professional Engineer Badge */}
+          <div className="flex items-center justify-center gap-3 mt-2">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Engineers_Australia_Logo.svg/120px-Engineers_Australia_Logo.svg.png" 
+              alt="Engineers Australia" 
+              className="w-7 h-9" 
+            />
+            <span className="text-xl text-primary font-medium">Professional Engineer | Engineers Australia</span>
+          </div>
+
+          <p className="text-2xl text-primary mt-1">Mechanical Engineer</p>
+
           <div className="flex gap-4 justify-center mt-8">
             <a href="#projects">
               <Button
@@ -84,7 +91,7 @@ export default function Home() {
                 View Projects
               </Button>
             </a>
-            <a href="../static/CV Divyan Acharya.jpeg" download>
+            <a href="../static/Divyan_Acharya_CV.pdf" download>
               <Button
                 size="lg"
                 className="backdrop-blur-sm bg-blue-500/80 hover:bg-blue-500/90 transition-all"
@@ -100,7 +107,7 @@ export default function Home() {
         </a>
       </section>
 
-      {/* About Section */}
+      {/* About Section - Updated */}
       <section id="about" className="py-20 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center animate-on-scroll">
@@ -122,28 +129,19 @@ export default function Home() {
                   Enthusiastic Mechanical Engineer
                 </h3>
               </div>
-              <p className="text-muted-foreground">
-                As an undergraduate mechanical engineer studying in <span className="text-gray-50">IOE Thapathali Campus</span>, I am building a strong
-                foundation in mechanical design, material science, and
-                manufacturing processes. I am passionate about applying
-                theoretical knowledge to real-world problems, with a keen
-                interest in sustainable design and innovation.
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Passionate Mechanical Engineering postgraduate student at the University of Newcastle, 
+                driven by a strong interest in manufacturing processes, mining equipment, advanced mechanical 
+                design, simulation & analysis, and industrial maintenance & reliability. I enjoy turning complex 
+                engineering challenges into practical, efficient, and safe solutions that improve performance 
+                and sustainability in real-world environments.
               </p>
-              {/* <div className="flex items-center gap-4">
-    <Gauge className="w-8 h-8 text-teal-500" />
-    <h3 className="text-2xl font-semibold">
-      Focused on Performance and Optimization
-    </h3>
-  </div>
-  <p className="text-muted-foreground">
-    I am dedicated to improving the efficiency and performance of mechanical systems through hands-on projects, simulations, and data analysis, constantly learning new tools and techniques to enhance system functionality.
-  </p> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills Section - Updated */}
       <section
         id="skills"
         className="py-20 px-4 md:px-8 bg-background text-foreground"
@@ -195,7 +193,6 @@ export default function Home() {
                   </span>
                 </button>
 
-                {/* Dropdown - Show Skills when category is active */}
                 {activeCategory === category.title && (
                   <div className="p-4 bg-black rounded-b-lg shadow-md backdrop-blur-md">
                     <ul className="space-y-3">
@@ -219,7 +216,6 @@ export default function Home() {
             {skills.map((category) =>
               category.title === activeCategory ? (
                 <div key={category.title}>
-                 
                   <ul className="space-y-3">
                     {category.skills.map((skill) => (
                       <li
@@ -237,7 +233,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience Section */}
+      {/* Experience Section - Updated with Prasiddha */}
       <section id="experience" className="py-20 px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl  font-bold mb-12 text-center animate-on-scroll">
@@ -270,34 +266,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section - Completely Updated */}
       <section id="projects" className="py-20 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center animate-on-scroll">
             Featured Projects
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden animate-on-scroll">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {project.description}
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    View Details
-                  </Button>
+              <Card key={index} className="overflow-hidden animate-on-scroll p-6">
+                <div className="mb-4">
+                  <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
                 </div>
+                <a 
+                  href={project.report} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="w-full">
+                    View Full Technical Report (PDF)
+                  </Button>
+                </a>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* NEW: Published Research Section */}
+      <section id="research" className="py-20 px-4 md:px-8 bg-background text-foreground">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center animate-on-scroll">
+            Published Research
+          </h2>
+          <Card className="p-8 animate-on-scroll">
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold mb-2">
+                Design, Simulation, and Experimental Analysis of a Full-Face Motorbike Helmet Using Composite Material
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Published in Journal of Innovations in Engineering Education (JIEE), 2026
+              </p>
+            </div>
+            
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Co-authored research paper on the design, ANSYS simulation, hand-layup fabrication, and experimental testing 
+              of a composite motorbike helmet (E-glass/polyester) that successfully met IS 4151 safety standards for impact absorption, 
+              penetration resistance, and rigidity.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="https://www.nepjol.info/index.php/jiee/article/view/82599" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  Read Published Paper
+                </Button>
+              </a>
+              <a 
+                href="../static/Design,+simulation,+and+experimental+analysis+of+a+full-face+motorbike+helmet+..." 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button>
+                  Download Full Paper (PDF)
+                </Button>
+              </a>
+            </div>
+          </Card>
         </div>
       </section>
 
@@ -349,104 +388,107 @@ export default function Home() {
           </Card>
         </div>
       </section>
-    <footer className=" pb-2">
-      <div className="flex justify-center text-center">
-       
-      <div> © {new Date().getFullYear()} All rights reserved.</div>
-      </div>
-    </footer>
+
+      <footer className="pb-2">
+        <div className="flex justify-center text-center">
+          <div>© {new Date().getFullYear()} All rights reserved.</div>
+        </div>
+      </footer>
     </main>
   );
 }
 
+/* Updated Data Arrays */
+
 const experiences = [
   {
-    period: "Dec 2024 - Present · 3 mos",
-    role: "Aircraft Maintenance Engineer",
-    company: "Nepal Airlines Corporation",
+    period: "May 2025 – Oct 2025",
+    role: "Graduate Mechanical Engineer",
+    company: "Prasiddha Water Industries, Nepal",
     achievements: [
-      "Internship at Nepal Airlines Corporation",
-      "Worked on aircraft maintenance and repair",
-      "Gained hands-on experience with aviation engineering",
+      "Designed and fabricated a motor-driven internal water jar cleaning system (shaft, bearings, brush mechanism).",
+      "Developed and implemented a preventive maintenance program for RO systems, filling machines, and packaging equipment.",
+      "Created structured asset management documentation and fault history records for the plant.",
     ],
   },
   {
-    period: "Apr 2024 - May 2024 · 2 mos",
-    role: "Mechanical Engineer",
-    company: "Raj Brewery Pvt. Ltd",
+    period: "Nov 2024 – Feb 2025",
+    role: "Mechanical Engineering Intern",
+    company: "Nepal Airlines Corporation, Nepal",
     achievements: [
-      "Internship focused on production management and refrigeration",
-      "Assisted in mechanical design and optimization",
-      "Enhanced efficiency in brewery operations",
+      "Assisted in maintenance and inspection of aircraft mechanical systems in compliance with aviation safety standards and CAAN regulations.",
+      "Applied structured fault diagnosis across complex aircraft systems.",
     ],
   },
   {
-    period: "Feb 2023 - May 2024 · 1 yr 4 mos",
-    role: "CAE Engineer",
-    company: "Team Shireto",
+    period: "Feb 2023 – May 2024",
+    role: "CAE Engineer – Electric Vehicle Project",
+    company: "Team Shireto, Thapathali Campus",
     achievements: [
-      "Part-time role specializing in vehicle dynamics",
-      "Worked on Optistruct simulations for structural analysis",
-      "Contributed to automotive and aerodynamics projects",
+      "Conducted FEA on EV chassis and structural components using Ansys and HyperMesh (OptiStruct).",
+      "Optimised designs for weight, stiffness, and safety in a multidisciplinary team.",
     ],
   },
 ];
 
 const projects = [
   {
-    title: "Turbo of an Engine",
-    description:
-      "Developed and optimized a high-performance turbocharging system to enhance engine efficiency and power output.",
-    image: tE,
+    title: "Internal Water Jar Cleaning System",
+    description: "Designed and fabricated a motor-driven internal jar cleaning machine with custom shaft, bearings, and brush mechanism. Performed full SolidWorks modelling and ANSYS structural & modal analysis. Delivered improved cleaning efficiency and reduced manual handling risk at Prasiddha Water Industries.",
+    report: "../static/Project%201%20.pdf",
   },
   {
-    title: "Solar Aligner",
-    description:
-      "Engineered an automated solar panel alignment system to maximize energy capture based on sun positioning.",
-    image: sA,
-  },
-  {
-    title: "Solar Cleaner",
-    description:
-      "Designed an autonomous cleaning system for solar panels to improve efficiency and reduce maintenance efforts.",
-    image: sC,
+    title: "Formula Student EV Chassis – Design & FEA",
+    description: "Led design and comprehensive finite element analysis of a tubular spaceframe chassis (AISI 4130) for a Formula Student electric vehicle. Conducted static bending, frontal impact, side impact, and torsional tests in ANSYS. Achieved strong factors of safety across all load cases.",
+    report: "../static/Project%202%20.pdf",
   },
 ];
 
 const skills = [
   {
     title: "Design & Analysis",
-    icon: <WrenchIcon className="w-8 h-8 text-blue-400" />,
+    icon: <Wrench className="w-6 h-6" />,
     skills: [
-      "CAD/CAM Software",
-      "Finite Element Analysis",
-      "3D Modeling",
-      "Technical Drawing",
+      "CAD Modelling (SolidWorks, Fusion 360, AutoCAD)",
+      "Mechanical System Design (shafts, bearings, assemblies)",
+      "Technical Drawing & Documentation",
     ],
   },
   {
-    title: "Manufacturing",
-    icon: <Factory className="w-8 h-8 text-blue-400" />,
+    title: "Simulation & FEA",
+    icon: <Gauge className="w-6 h-6" />,
     skills: [
-      "CNC Programming",
-      "Additive Manufacturing",
-      "Quality Control",
-      "Process Optimization",
+      "ANSYS (Static, Dynamic, Structural & Modal Analysis)",
+      "Altair HyperMesh / OptiStruct",
+      "FEA Validation & Design Optimisation",
     ],
   },
   {
-    title: "Technical",
-    icon: <Cpu className="w-8 h-8 text-blue-400" />,
-    skills: ["AutoCAD", "SolidWorks", "MATLAB", "Python"],
+    title: "Maintenance & Reliability",
+    icon: <Cog className="w-6 h-6" />,
+    skills: [
+      "Preventive Maintenance Programs",
+      "Structured Fault Diagnosis & Root Cause Analysis",
+      "Asset Documentation & SOP Development",
+    ],
   },
   {
-    title: "Soft Skills",
-    icon: <Brain className="w-8 h-8 text-blue-400" />,
+    title: "Manufacturing & Processes",
+    icon: <Factory className="w-6 h-6" />,
     skills: [
-      "Project Management",
-      "Team Leadership",
-      "Problem Solving",
-      "Technical Writing",
+      "Process Optimisation & Efficiency Improvement",
+      "Equipment Troubleshooting",
+      "Fabrication Coordination & Quality Control",
+    ],
+  },
+  {
+    title: "Professional & Soft Skills",
+    icon: <Brain className="w-6 h-6" />,
+    skills: [
+      "Cross-disciplinary Team Collaboration",
+      "Technical Reporting & Documentation",
+      "Problem-Solving in Safety-Critical Environments",
+      "Project Coordination & Communication",
     ],
   },
 ];
